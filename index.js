@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const port = process.env.PORT || 3000;
 
 // 静的ファイルはpublic以下に
 app.use(express.static('public'));
@@ -10,6 +11,6 @@ app.post('/orders', function (req, res) {
   
 });
 
-app.listen(3000, function () {
-  console.log('http://127.0.0.1:3000/ を開いてください。')
+app.listen(port, function () {
+  console.log(`http://127.0.0.1:${port}/ を開いてください。`);
 });

@@ -1,0 +1,11 @@
+.sq-input {
+  border: 1px solid rgb(223, 223, 223);
+  outline-offset: -2px;
+  margin-bottom: 5px;
+}
+.sq-input--focus {
+  outline: 5px auto rgb(59, 153, 252);
+}
+.sq-input--error {
+  outline: 5px auto rgb(255, 97, 97);
+}

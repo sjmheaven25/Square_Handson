@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "onsenui": "^2.5.3",
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7"
   }
 }

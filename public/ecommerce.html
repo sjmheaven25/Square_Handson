@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Square決済</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/css/commerce.css">
+    <link rel="shortcut icon" href="">
+  </head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col align-self-center">
+        <h1>決済テスト</h1>
+        <form action="/orders" method="post" id="commerceForm">
+          <div class="form-group">
+            <label for="inputName">名前</label>
+            <input type="text" class="form-control" name="name" id="inputName" placeholder="お名前">
+          </div>
+          <div class="form-group">
+            <label for="inputName">住所</label>
+            <input type="text" class="form-control" name="address" id="inputAddress" placeholder="住所">
+          </div>
+          <p>
+            <div class="row">
+              <div class="col-md-3 col-md-offset-3">
+                <img src="/img/reader.jpg" />
+              </div>
+              <div class="col-md-6">
+                <strong>商品名：Squareリーダー</strong>
+                <p>
+                  価格：5,000円
+                </p>
+              </div>
+            </div>
+          </p>
+          <button type="submit" class="btn btn-primary" id="order">注文する</button>
+        </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="/vendors/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/ecommerce.js"></script>
+</body>
+</html>

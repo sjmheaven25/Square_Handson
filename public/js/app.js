@@ -1,53 +1,53 @@
-// ’è”‚Ì’è‹`
-var url = 'https://stormy-retreat-14719.herokuapp.com/'; // ƒR[ƒ‹ƒoƒbƒN‚·‚éURL
-var client_id = 'sq0idp-x3svdjjm33nM4EQstkE4kw'; // Square‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“ID
+// å®šæ•°ã®å®šç¾©
+var url = 'https://stormy-retreat-14719.herokuapp.com/'; // ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹URL
+var client_id = 'sq0idp-x3svdjjm33nM4EQstkE4kw'; // Squareã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ID
 
-// Onsen UI‚ªg‚¦‚éó‘Ô‚É‚È‚Á‚½‚Æ‚±‚ë‚©‚çˆ—ŠJn
+// Onsen UIãŒä½¿ãˆã‚‹çŠ¶æ…‹ã«ãªã£ãŸã¨ã“ã‚ã‹ã‚‰å‡¦ç†é–‹å§‹
 ons.ready(function() {
-  // ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚ÌƒCƒxƒ“ƒgˆ—
+  // ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸæ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†
   $('#square').on('click', function(e) {
-    // •Ï”‚Ìæ“¾
+    // å¤‰æ•°ã®å–å¾—
     var price = $('#price').val();
     var notes = $('#notes').val();
     var supported_tender_types = $("input[name='supported_tender_types[]']:checked").map(function() {
       return $(this).val();
     }).toArray();
 
-    // ƒpƒ‰ƒ[ƒ^‚Ì¶¬
+    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ç”Ÿæˆ
     var dataParameter = {
-      // ƒCƒ“ƒeƒ“ƒg‚ÌƒAƒNƒVƒ‡ƒ“B com.squareup.pos.action.CHARGE ŒÅ’è‚Å‚·B
+      // ã‚¤ãƒ³ãƒ†ãƒ³ãƒˆã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã€‚ com.squareup.pos.action.CHARGE å›ºå®šã§ã™ã€‚
       "action": "com.squareup.pos.action.CHARGE",
-      // POSƒŒƒWƒAƒvƒŠ‚ªƒR[ƒ‹ƒoƒbƒN‚·‚éURL
+      // POSãƒ¬ã‚¸ã‚¢ãƒ—ãƒªãŒã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã™ã‚‹URL
       "S.com.squareup.pos.WEB_CALLBACK_URI": url,
-      // ƒAƒvƒŠƒP[ƒVƒ‡ƒ“IDi©•ª‚Ì‚à‚Ì‚É’u‚«Š·‚¦‚Ä‚­‚¾‚³‚¢j
+      // ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³IDï¼ˆè‡ªåˆ†ã®ã‚‚ã®ã«ç½®ãæ›ãˆã¦ãã ã•ã„ï¼‰
       "S.com.squareup.pos.CLIENT_ID": client_id,
-      // ƒo[ƒWƒ‡ƒ“iŒ»İ‚Í1.3ŒÅ’è‚Å‚·j
+      // ãƒãƒ¼ã‚¸ãƒ§ãƒ³ï¼ˆç¾åœ¨ã¯1.3å›ºå®šã§ã™ï¼‰
       "S.com.squareup.pos.API_VERSION": 'v1.3',
-      // ‹àŠz‚ÉŠÖ‚·‚éî•ñ
+      // é‡‘é¡ã«é–¢ã™ã‚‹æƒ…å ±
       "i.com.squareup.pos.TOTAL_AMOUNT": price,
       "S.com.squareup.pos.CURRENCY_CODE": "JPY",
-      // —˜—p‚Å‚«‚éŒˆÏ•û–@
+      // åˆ©ç”¨ã§ãã‚‹æ±ºæ¸ˆæ–¹æ³•
       "S.com.squareup.pos.TENDER_TYPES": supported_tender_types.join(","),
-      // ƒpƒbƒP[ƒWB•K‚¸ com.squareup ‚ğw’è
+      // ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã€‚å¿…ãš com.squareup ã‚’æŒ‡å®š
       "package": "com.squareup",
-      // æˆø‚ÉŠÖ‚·‚éà–¾‘‚«
+      // å–å¼•ã«é–¢ã™ã‚‹èª¬æ˜æ›¸ã
       "S.com.squareup.pos.NOTE": notes
     };
     
-    // URL‚Ì¶¬
+    // URLã®ç”Ÿæˆ
     params = [];
     for (var key in dataParameter) {
       params.push(`${key}=${dataParameter[key]}`);
     }
     var uri = "intent:#Intent;" + params.join(';') + ';end';
     
-    // POSƒŒƒWƒAƒvƒŠŒÄ‚Ño‚µ
+    // POSãƒ¬ã‚¸ã‚¢ãƒ—ãƒªå‘¼ã³å‡ºã—
     location.href = uri;
   });
   
   if (location.search) {
     try{
-      // ƒR[ƒ‹ƒoƒbƒN‚³‚ê‚½ê‡
+      // ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã•ã‚ŒãŸå ´åˆ
       var url = location.search.replace('?', '');
       ary = url.split('&');
       var params = {};
@@ -56,20 +56,20 @@ ons.ready(function() {
         params[values[0]] = values[1];
       }
       if (params['com.squareup.pos.CLIENT_TRANSACTION_ID']) {
-        // ŒˆÏŠ®—¹
-        $('.alert-dialog-title').text('ŒˆÏˆ—Š®—¹');
-        $('.alert-dialog-content').text('æˆøID‚Í' + params['com.squareup.pos.CLIENT_TRANSACTION_ID'] + '‚Å‚·');
+        // æ±ºæ¸ˆå®Œäº†
+        $('.alert-dialog-title').text('æ±ºæ¸ˆå‡¦ç†å®Œäº†');
+        $('.alert-dialog-content').text('å–å¼•IDã¯' + params['com.squareup.pos.CLIENT_TRANSACTION_ID'] + 'ã§ã™');
         $('#dialog').show();
       }else{
-        // ŒˆÏƒGƒ‰[
-        $('.alert-dialog-title').text('ŒˆÏˆ—¸”s');
-        $('.alert-dialog-content').text('ƒGƒ‰[ƒR[ƒhF' + params['com.squareup.pos.ERROR_DESCRIPTION']);
+        // æ±ºæ¸ˆã‚¨ãƒ©ãƒ¼
+        $('.alert-dialog-title').text('æ±ºæ¸ˆå‡¦ç†å¤±æ•—');
+        $('.alert-dialog-content').text('ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ï¼š' + params['com.squareup.pos.ERROR_DESCRIPTION']);
         $('#dialog').show();
       }
     } catch(e) {
-      // ƒGƒ‰[‚Ìê‡
-      $('.alert-dialog-title').text('ŒˆÏˆ—¸”s');
-      $('.alert-dialog-content').text('ƒf[ƒ^‚ª•s³‚Å‚·');
+      // ã‚¨ãƒ©ãƒ¼ã®å ´åˆ
+      $('.alert-dialog-title').text('æ±ºæ¸ˆå‡¦ç†å¤±æ•—');
+      $('.alert-dialog-content').text('ãƒ‡ãƒ¼ã‚¿ãŒä¸æ­£ã§ã™');
       $('#dialog').show();
     }
   }

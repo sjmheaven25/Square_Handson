@@ -44,4 +44,38 @@ ons.ready(function() {
     // POSレジアプリ呼び出し
     location.href = uri;
   });
+  
+  if (location.search) {
+    try{
+      // コールバックされた場合
+      var url = location.search.replace('?', '');
+      ary = url.split('&');
+      var params = {};
+      for (var i = 0; i < ary.length; i++) {
+        values = ary[i].split('=');
+        params[values[0]] = values[1];
+      }
+      if (params['com.squareup.pos.CLIENT_TRANSACTION_ID']) {
+        // 決済完了
+        $('.alert-dialog-title').text('決済処理完了');
+        $('.alert-dialog-content').text('取引IDは' + params['com.squareup.pos.CLIENT_TRANSACTION_ID'] + 'です');
+        $('#dialog').show();
+      }else{
+        // 決済エラー
+        $('.alert-dialog-title').text('決済処理失敗');
+        $('.alert-dialog-content').text('エラーコード：' + params['com.squareup.pos.ERROR_DESCRIPTION']);
+        $('#dialog').show();
+      }
+    } catch(e) {
+      // エラーの場合
+      $('.alert-dialog-title').text('決済処理失敗');
+      $('.alert-dialog-content').text('データが不正です');
+      $('#dialog').show();
+    }
+  }
+
+  var hideDialog = function() {
+  $('#dialog').hide();
+};
 });
+

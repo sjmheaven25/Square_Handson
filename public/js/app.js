@@ -1,6 +1,6 @@
 // 定数の定義
-var url = ''; // コールバックするURL
-var client_id = ''; // SquareのアプリケーションID
+var url = 'https://stormy-retreat-14719.herokuapp.com/'; // コールバックするURL
+var client_id = 'sq0idp-x3svdjjm33nM4EQstkE4kw'; // SquareのアプリケーションID
 
 // Onsen UIが使える状態になったところから処理開始
 ons.ready(function() {
